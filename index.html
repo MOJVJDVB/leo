@@ -32,6 +32,15 @@ body {
   overflow-y: scroll;
 }
 
+/* --- إضافة: إخفاء مشغل يوتيوب --- */
+#youtube-player {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* خلفية جزيئات متطورة */
 #particles-js {
   position: fixed;
@@ -152,6 +161,8 @@ p { font-size: clamp(16px, 1.8vw, 26px); color: var(--text-muted); line-height: 
 </head>
 <body>
 
+<div id="youtube-player"></div>
+
 <div id="particles-js"></div>
 <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
@@ -161,7 +172,6 @@ p { font-size: clamp(16px, 1.8vw, 26px); color: var(--text-muted); line-height: 
     <button class="nav-btn" id="playBtn" onclick="togglePlay()"><i class="fa-solid fa-pause"></i></button>
 </div>
 
-<!-- 1. الشريحة الرئيسية -->
 <section class="slide-container" id="page1">
     <h1 class="animate-item glow-text">LEORES</h1>
     <p class="animate-item delay-1">الجيل القادم من تخليد اللحظات بدقة 8K</p>
@@ -170,7 +180,6 @@ p { font-size: clamp(16px, 1.8vw, 26px); color: var(--text-muted); line-height: 
     </div>
 </section>
 
-<!-- 2. الرؤية المستقبلية -->
 <section class="slide-container" id="page2">
     <h2 class="slide-title animate-item">رؤية 2030 التقنية</h2>
     <div class="tile animate-item delay-1">
@@ -178,148 +187,41 @@ p { font-size: clamp(16px, 1.8vw, 26px); color: var(--text-muted); line-height: 
     </div>
 </section>
 
-<!-- 3. قوة سلة (Salla Integration) -->
-<section class="slide-container" id="page3">
-    <h2 class="slide-title animate-item">تجربة شراء ذكية</h2>
-    <div class="grid grid-2 animate-item delay-1">
-        <div class="tile">
-            <i class="fa-solid fa-shield-halved feature-icon" style="color: var(--salla);"></i>
-            <h3>دفع آمن وموثوق</h3>
-            <p>من خلال شراكتنا مع "سلة"، نوفر كافة وسائل الدفع المحلية (مدى، Apple Pay) بأعلى معايير الأمان.</p>
-        </div>
-        <div class="tile">
-            <i class="fa-solid fa-truck-fast feature-icon" style="color: var(--salla);"></i>
-            <h3>تتبع مباشر للطلب</h3>
-            <p>نظام لوجستي متطور يتيح لك تتبع تحفتك الفنية من لحظة الطباعة حتى وصولها لباب منزلك.</p>
-        </div>
-    </div>
-</section>
-
-<!-- 4. التقنيات (Ultra Resolution) -->
-<section class="slide-container" id="page4">
-    <h2 class="slide-title animate-item">دقة الـ 22 ميكرون</h2>
-    <div class="grid grid-3 animate-item delay-1">
-        <div class="tile stat-card">
-            <span style="font-size: 50px; font-weight: 900; color: var(--primary);">8K</span>
-            <p>وضوح فائق للأسطح</p>
-        </div>
-        <div class="tile stat-card">
-            <span style="font-size: 50px; font-weight: 900; color: var(--accent);">22μm</span>
-            <p>أدق تفاصيل المسام</p>
-        </div>
-        <div class="tile stat-card">
-            <span style="font-size: 50px; font-weight: 900; color: var(--salla);">100%</span>
-            <p>نعومة ملمس نهائية</p>
-        </div>
-    </div>
-</section>
-
-<!-- 5. النحت الرقمي (Digital Sculpting) -->
-<section class="slide-container" id="page5">
-    <h2 class="slide-title animate-item">النحت الرقمي اليدوي</h2>
-    <p class="animate-item delay-1">لا نعتمد على المسح الآلي فقط، بل يقوم فنانونا بنحت الملامح يدوياً عبر أجهزة اللمس الرقمية لضمان التقاط "روح" الشخصية وليس فقط شكلها.</p>
-    <div class="animate-item delay-2" style="margin-top: 30px;">
-        
-    </div>
-</section>
-
-<!-- 6. باقات المنتجات المتطورة -->
-<section class="slide-container" id="page6">
-    <h2 class="slide-title animate-item">باقاتنا الحصرية</h2>
-    <div class="grid grid-3 animate-item delay-1">
-        <div class="tile">
-            <h4>باقة الذكرى</h4>
-            <p>Mini-Head</p>
-        </div>
-        <div class="tile" style="border-color: var(--accent);">
-            <h4>باقة البطل</h4>
-            <p>Full Figure</p>
-        </div>
-        <div class="tile" style="border-color: var(--salla);">
-            <h4>باقة الديوراما</h4>
-            <p>Ultimate Scene</p>
-        </div>
-    </div>
-</section>
-
-<!-- 7. التلوين السينمائي -->
-<section class="slide-container" id="page7">
-    <h2 class="slide-title animate-item">تلوين بمستوى هوليود</h2>
-    <div class="tile animate-item delay-1">
-        <p>نستخدم أصباغاً عالية الجودة وتقنيات "Shadowing" سينمائية تمنح المجسم عمقاً بصرياً يجعله يبدو حقيقياً تحت أي إضاءة.</p>
-    </div>
-</section>
-
-<!-- 8. المعالجة (Post-Processing) -->
-<section class="slide-container" id="page8">
-    <h2 class="slide-title animate-item">معالجة UV فائقة</h2>
-    <p class="animate-item delay-1">كل قطعة تمر بـ 4 مراحل من المعالجة الكيميائية والضوئية لضمان صلابة تدوم لسنوات دون تغير في الألوان أو الملمس.</p>
-</section>
-
-<!-- 9. التغليف الذكي -->
-<section class="slide-container" id="page9">
-    <h2 class="slide-title animate-item">أكثر من مجرد صندوق</h2>
-    <div class="tile animate-item delay-1">
-        <p>تغليف FIGUME صمم ليكون جزءاً من العرض، مع إمكانية إضافة إضاءة LED مدمجة وشريحة NFC تعرض قصة المجسم على جوالك.</p>
-    </div>
-</section>
-
-<!-- 10. إحصائيات السوق -->
-<section class="slide-container" id="page10">
-    <h2 class="slide-title animate-item">نمو متسارع</h2>
-    <div class="grid grid-2 animate-item delay-1">
-        <div class="tile">
-            <h3 style="color: var(--primary);">سوق الـ Collectibles</h3>
-            <p>ينمو بنسبة 15% سنوياً في منطقة الخليج، ونحن نقود الابتكار فيه.</p>
-        </div>
-        <div class="tile">
-            <h3 style="color: var(--salla);">مبيعات سلة</h3>
-            <p>تكاملنا مع سلة رفع نسبة رضا العملاء بمقدار 40% لسهولة الطلب.</p>
-        </div>
-    </div>
-</section>
-
-<!-- 11. فريق الابتكار -->
-<section class="slide-container" id="page11">
-    <h2 class="slide-title animate-item">عقول تصنع المستحيل</h2>
-    <p class="animate-item delay-1">فريقنا يجمع بين مهندسي ميكاترونيكس وفنانين تشكيليين حائزين على جوائز، يعملون بشغف لتحويل خيالك إلى حقيقة.</p>
-</section>
-
-<!-- 12. الواقع المعزز (AR Preview) -->
-<section class="slide-container" id="page12">
-    <h2 class="slide-title animate-item">شاهده في غرفتك أولاً</h2>
-    <div class="tile animate-item delay-1">
-        <p>عبر تقنية AR، يمكنك معاينة المجسم في مكانك قبل الضغط على زر "شراء" في متجرنا على سلة.</p>
-    </div>
-</section>
-
-<!-- 13. المسؤولية البيئية -->
-<section class="slide-container" id="page13">
-    <h2 class="slide-title animate-item">فن صديق للبيئة</h2>
-    <p class="animate-item delay-1">نفتخر باستخدام مواد ريزن حيوية (Bio-Resin) تقلل من الانبعاثات الكربونية بنسبة 30% مقارنة بالطباعة التقليدية.</p>
-</section>
-
-<!-- 14. انضم للمستثمرين -->
-<section class="slide-container" id="page14">
-    <h2 class="slide-title animate-item">استثمر في المستقبل</h2>
-    <div class="tile animate-item delay-1" style="background: var(--gradient); color: var(--bg);">
-        <h3 style="color: white;">كن شريكاً في LEORES</h3>
-        <p style="color: rgba(2, 6, 23, 0.8);">نحن نعيد تعريف مفهوم الاقتناء الشخصي. انضم لجولتنا الاستثمارية القادمة.</p>
-    </div>
-</section>
-
-<!-- 15. الخاتمة -->
 <section class="slide-container" id="page15">
     <h1 class="animate-item glow-text">ابدأ قصتك</h1>
     <p class="animate-item delay-1">تحفتك الفنية تنتظرك في متجرنا</p>
     <div class="animate-item delay-2" style="margin-top: 50px;">
-        <button class="tile" style="padding: 15px 40px; font-weight: 900; color: var(--salla);">ادعمنا عبر LEORES الآن</button>
+        <button class="tile" style="padding: 15px 40px; font-weight: 900; color: var(--salla); cursor: pointer;" onclick="playYouTubeMusic()">
+            ادعمنا عبر LEORES الآن
+        </button>
     </div>
 </section>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <script>
-    // تهيئة الجزيئات المتطورة
+    // --- إضافة: منطق موسيقى يوتيوب ---
+    let ytPlayer;
+    function onYouTubeIframeAPIReady() {
+        ytPlayer = new YT.Player('youtube-player', {
+            height: '0',
+            width: '0',
+            videoId: 'https://www.youtube.com/watch?v=I34bTKW8ud0&list=PLLELmi94d_Vk6qOPUYUMsLdC5VjUyEqH4&index=1', // استبدل هذا الكود بكود الفيديو الخاص بك
+            playerVars: {
+                'autoplay': 0,
+                'controls': 0
+            }
+        });
+    }
+
+    function playYouTubeMusic() {
+        if (ytPlayer && ytPlayer.playVideo) {
+            ytPlayer.playVideo();
+        }
+    }
+
+    // تهيئة الجزيئات المتطورة (كودك الأصلي)
     particlesJS("particles-js", {
         "particles": {
             "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
@@ -351,12 +253,14 @@ p { font-size: clamp(16px, 1.8vw, 26px); color: var(--text-muted); line-height: 
 
     function updateProgress() {
         const percent = ((currentSlide + 1) / slides.length) * 100;
-        document.getElementById('progressBar').style.width = percent + '%';
+        const pb = document.getElementById('progressBar');
+        if(pb) pb.style.width = percent + '%';
     }
 
     function togglePlay() {
         autoPlay = !autoPlay;
-        document.getElementById('playBtn').innerHTML = autoPlay ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
+        const btn = document.getElementById('playBtn');
+        if(btn) btn.innerHTML = autoPlay ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
     }
 
     function startTimer() {
@@ -384,4 +288,3 @@ p { font-size: clamp(16px, 1.8vw, 26px); color: var(--text-muted); line-height: 
 
 </body>
 </html>
-
